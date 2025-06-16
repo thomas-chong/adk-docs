@@ -138,7 +138,7 @@ Expected output for `stream_query` (local):
 from vertexai import agent_engines
 
 remote_app = agent_engines.create(
-    agent_engine=app,
+    agent_engine=root_agent,
     requirements=[
         "google-cloud-aiplatform[adk,agent_engines]"   
     ]
