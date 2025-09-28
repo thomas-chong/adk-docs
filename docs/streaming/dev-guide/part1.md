@@ -4,7 +4,7 @@ Welcome to the world of bidirectional streaming with [Agent Development Kit (ADK
 
 Imagine building an AI assistant that doesn't just wait for you to finish speaking before responding, but actively listens and can be interrupted mid-sentence when you have a sudden thought. Picture creating customer support bots that handle audio, video, and text simultaneously while maintaining context throughout the conversation. This is the power of bidirectional streaming, and ADK makes it accessible to every developer.
 
-## 1.1 What is Bidi-streaming?
+## 1.1 What is Bidi-streaming? { #what-is-bidi-streaming }
 
 Bidi-streaming (Bidirectional streaming) represents a fundamental shift from traditional AI interactions. Instead of the rigid "ask-and-wait" pattern, it enables **real-time, two-way communication** where both human and AI can speak, listen, and respond simultaneously. This creates natural, human-like conversations with immediate responses and the revolutionary ability to interrupt ongoing interactions.
 
@@ -62,38 +62,32 @@ In a video of the [Shopper's Concierge demo](https://www.youtube.com/watch?v=LwH
   </div>
 </div>
 
-Also, there are many possible real-world applications for bidirectional streaming:
+Also, you can think of many possible real-world applications for bidirectional streaming:
 
-- **Customer Service & Contact Centers**: This is the most direct application. The technology can create sophisticated virtual agents that go far beyond traditional chatbots.
+1. **Customer Service & Contact Centers**: This is the most direct application. The technology can create sophisticated virtual agents that go far beyond traditional chatbots.
 
-  - Use case: A customer calls a retail company's support line about a defective product.
-  - Multimodality (video): The customer can say, "My coffee machine is leaking from the bottom, let me show you." They can then use their phone's camera to stream live video of the issue. The AI agent can use its vision capabilities to identify the model and the specific point of failure.
-  - Live Interaction & Interruption: If the agent says, "Okay, I'm processing a return for your Model X coffee maker," the customer can interrupt with, "No, wait, it's the Model Y Pro," and the agent can immediately correct its course without restarting the conversation.
+    - **Use case**: A customer calls a retail company's support line about a defective product.
+    - **Multimodality (video)**: The customer can say, "My coffee machine is leaking from the bottom, let me show you." They can then use their phone's camera to stream live video of the issue. The AI agent can use its vision capabilities to identify the model and the specific point of failure.
+    - **Live Interaction & Interruption**: If the agent says, "Okay, I'm processing a return for your Model X coffee maker," the customer can interrupt with, "No, wait, it's the Model Y Pro," and the agent can immediately correct its course without restarting the conversation.
 
-- **E-commerce & Personalized Shopping**: The agent can act as a live, interactive personal shopper, enhancing the online retail experience.
+1. **Field Service & Technical Assistance**: Technicians working on-site can use a hands-free, voice-activated assistant to get real-time help.
 
-  - Use Case: A user is browsing a fashion website and wants styling advice.
-  - Multimodality (Voice & Image): The user can hold up a piece of clothing to their webcam and ask, "Can you find me a pair of shoes that would go well with these pants?" The agent analyzes the color and style of the pants.
-  - Live Interaction: The conversation can be a fluid back-and-forth: "Show me something more casual." ... "Okay, how about these sneakers?" ... "Perfect, add the blue ones in size 10 to my cart."
+    - **Use Case**: An HVAC technician is on-site trying to diagnose a complex commercial air conditioning unit.
+    - **Multimodality (Video & Voice)**: The technician, wearing smart glasses or using a phone, can stream their point-of-view to the AI agent. They can ask, "I'm hearing a strange noise from this compressor. Can you identify it and pull up the diagnostic flowchart for this model?"
+    - **Live Interaction**: The agent can guide the technician step-by-step, and the technician can ask clarifying questions or interrupt at any point without taking their hands off their tools.
 
-- **Field Service & Technical Assistance**: Technicians working on-site can use a hands-free, voice-activated assistant to get real-time help.
+1. **Healthcare & Telemedicine**: The agent can serve as a first point of contact for patient intake, triage, and basic consultations.
 
-  - Use Case: An HVAC technician is on-site trying to diagnose a complex commercial air conditioning unit.
-  - Multimodality (Video & Voice): The technician, wearing smart glasses or using a phone, can stream their point-of-view to the AI agent. They can ask, "I'm hearing a strange noise from this compressor. Can you identify it and pull up the diagnostic flowchart for this model?"
-  - Live Interaction: The agent can guide the technician step-by-step, and the technician can ask clarifying questions or interrupt at any point without taking their hands off their tools.
+    - **Use Case**: A patient uses a provider's app for a preliminary consultation about a skin condition.
+    - **Multimodality (Video/Image)**: The patient can securely share a live video or high-resolution image of a rash. The AI can perform a preliminary analysis and ask clarifying questions.
 
-- **Healthcare & Telemedicine**: The agent can serve as a first point of contact for patient intake, triage, and basic consultations.
+1. **Financial Services & Wealth Management**: An agent can provide clients with a secure, interactive, and data-rich way to manage their finances.
 
-  - Use Case: A patient uses a provider's app for a preliminary consultation about a skin condition.
-  - Multimodality (Video/Image): The patient can securely share a live video or high-resolution image of a rash. The AI can perform a preliminary analysis and ask clarifying questions.
+    - **Use Case**: A client wants to review their investment portfolio and discuss market trends.
+    - **Multimodality (Screen Sharing)**: The agent can share its screen to display charts, graphs, and portfolio performance data. The client could also share their screen to point to a specific news article and ask, "What is the potential impact of this event on my tech stocks?"
+    - **Live Interaction**: Analyze the client's current portfolio allocation by accessing their account data.Simulate the impact of a potential trade on the portfolio's risk profile.
 
-- **Financial Services & Wealth Management**: An agent can provide clients with a secure, interactive, and data-rich way to manage their finances.
-
-  - Use Case: A client wants to review their investment portfolio and discuss market trends.
-  - Multimodality (Screen Sharing): The agent can share its screen to display charts, graphs, and portfolio performance data. The client could also share their screen to point to a specific news article and ask, "What is the potential impact of this event on my tech stocks?"
-  - Live Interaction: Analyze the client's current portfolio allocation by accessing their account data.Simulate the impact of a potential trade on the portfolio's risk profile.
-
-## 1.2 ADK Streaming Architecture Overview
+## 1.2 ADK Bidi-streaming Architecture Overview { #adk-bidi-streaming-architecture-overview }
 
 ADK Bidi-streaming architecture enables bidirectional AI conversations feel as natural as human dialogue. The architecture seamlessly integrates with Google's [Gemini Live API](https://ai.google.dev/gemini-api/docs/live) through a sophisticated pipeline that has been designed for low latency and high-throughput communication.
 
@@ -146,11 +140,11 @@ graph TB
     class L1,L2,L4,G1,G2 adk
 ```
 
-| Developer provides: | ADK provides: | Gemini Live API provides: |
+| Developer provides: | ADK provides: | Gemini provides: |
 |:----------------------------|:------------------|:------------------------------|
 | **Web / Mobile**: Frontend applications that users interact with, handling UI/UX, user input capture, and response display<br><br>**[WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) / [SSE](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) Server**: Real-time communication server (such as [FastAPI](https://fastapi.tiangolo.com/)) that manages client connections, handles streaming protocols, and routes messages between clients and ADK<br><br>**Agent**: Custom AI agent definition with specific instructions, tools, and behavior tailored to your application's needs | **[LiveRequestQueue](https://github.com/google/adk-python/blob/main/src/google/adk/agents/live_request_queue.py)**: Message queue that buffers and sequences incoming user messages (text content, audio blobs, control signals) for orderly processing by the agent<br><br>**[Runner](https://github.com/google/adk-python/blob/main/src/google/adk/runners.py)**: Execution engine that orchestrates agent sessions, manages conversation state, and provides the `run_live()` streaming interface<br><br>**[LLM Flow](https://github.com/google/adk-python/blob/main/src/google/adk/flows/llm_flows/base_llm_flow.py)**: Processing pipeline that handles streaming conversation logic, manages context, and coordinates with language models<br><br>**[GeminiLlmConnection](https://github.com/google/adk-python/blob/main/src/google/adk/models/gemini_llm_connection.py)**: Abstraction layer that bridges ADK's streaming architecture with Gemini Live API, handling protocol translation and connection management | **[Gemini Live API](https://ai.google.dev/gemini-api/docs/live)**: Google's real-time language model service that processes streaming input, generates responses, handles interruptions, supports multimodal content (text, audio, video), and provides advanced AI capabilities like function calling and contextual understanding |
 
-## 1.3 Setting Up Your Development Environment
+## 1.3 Setting Up Your Development Environment { #setting-up-your-development-environment }
 
 Now that you understand the gist of ADK Bidi-streaming architecture and the value it provides, it's time to get hands-on experience. This section will prepare your development environment so you can start building the streaming agents and applications described in the previous sections.
 
@@ -158,7 +152,7 @@ By the end of this setup, you'll have everything needed to create the intelligen
 
 ### Installation Steps
 
-#### 1. Create Virtual Environment (Recommended)
+#### 1. Create Virtual Environment (Recommended) { #create-virtual-environment-recommended }
 
 ```bash
 # Create virtual environment
@@ -173,7 +167,7 @@ source .venv/bin/activate
 # .venv\Scripts\Activate.ps1
 ```
 
-#### 2. Install ADK
+#### 2. Install ADK { #install-adk }
 
 Create a `requirements.txt` file in your project root. Note that `google-adk` library includes FastAPI and uvicorn that you can use as the web server for bidi-streaming applications.
 
@@ -188,14 +182,14 @@ Install all dependencies:
 pip install -r requirements.txt
 ```
 
-#### 3. Set SSL Certificate Path (macOS only)
+#### 3. Set SSL Certificate Path (macOS only) { #set-ssl-certificate-path-macos-only }
 
 ```bash
 # Required for proper SSL handling on macOS
 export SSL_CERT_FILE=$(python -m certifi)
 ```
 
-#### 4. Set Up API Keys
+#### 4. Set Up API Keys { #set-up-api-keys }
 
 Choose your preferred platform for running agents:
 
@@ -223,7 +217,7 @@ Choose your preferred platform for running agents:
     GOOGLE_CLOUD_LOCATION=us-central1
     ```
 
-#### 5. Create Environment Setup Script
+#### 5. Create Environment Setup Script { #create-environment-setup-script }
 
 We will create the validation script that will verify your installation:
 
